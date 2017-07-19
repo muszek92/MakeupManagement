@@ -1,15 +1,29 @@
-import java.text.SimpleDateFormat;
+
+import java.util.Calendar;
+import java.util.Scanner;
 
 public class Service {
 
     private String name;
     private String additionalInformation;
-    private String monthData;
+    private Calendar serviceDate;
     private double cost;
 
-    //deklaracja obsługiwanych miesięcy
-    String [] months  = {"Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Listopad", "Październik", "Grudzień"};
+    Scanner scanner = new Scanner(System.in);
 
+    public Service (String name, String additionalInformation, Calendar serviceDate, double cost) {
+        this.name = name;
+        this.additionalInformation = additionalInformation;
+        this.serviceDate = serviceDate;
+        this.cost = cost;
+    }
+
+    public Service(){
+        this.name = getNameTerminal();
+        this.additionalInformation = getAdditionalInformationTerminal();
+        this.serviceDate = getServiceDateTerminal();
+        this.cost = getCostTerminal();
+    }
 
     public String getName() {
         return name;
@@ -27,22 +41,12 @@ public class Service {
         this.additionalInformation = additionalInformation;
     }
 
-    public String getData() {
-        return monthData;
+    public Calendar getServiceDate() {
+        return serviceDate;
     }
 
-    public void setData(String data) {
-        for (int i = 0; i < months.length; i++){
-            if (data.equals(months[i])){
-                this.monthData = monthData;
-                break;
-            }else {
-                System.out.println("Nie ma takiego miesiąca");
-                break; // Jak poprosić o wpisanie ponownie?
-
-            }
-        }
-
+    public void setServiceDate(Calendar serviceDate) {
+        this.serviceDate = serviceDate;
     }
 
     public double getCost() {
@@ -55,4 +59,6 @@ public class Service {
         }else
         this.cost = cost;
     }
+
+
 }

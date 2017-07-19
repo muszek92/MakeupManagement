@@ -13,7 +13,7 @@ public class DataManager {
         scanner = new Scanner(System.in);
     }
 
-    public void addCustumerToArray(DataStorage ){
+    public void addCustumerToArray(DataStorage dataManager){
         System.out.println("Podaj imie klientki: ");
         List<String> dataArray = new ArrayList<String>();
         dataArray.add(scanner.next());

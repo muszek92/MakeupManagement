@@ -14,6 +14,10 @@ public class Customer {
     public void sprawdzanieDaty(){
         System.out.println("Podaj date");
         service.setData(scanner.next());
+
+
     }
 
 }
+
+
