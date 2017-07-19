@@ -35,13 +35,13 @@ public class Service {
         for (int i = 0; i < months.length; i++){
             if (data.equals(months[i])){
                 this.monthData = monthData;
+                break;
             }else {
                 System.out.println("Nie ma takiego miesiąca");
+                break; // Jak poprosić o wpisanie ponownie?
 
             }
         }
-
-        this.monthData = monthData;
 
     }
 
@@ -50,6 +50,9 @@ public class Service {
     }
 
     public void setCost(double cost) {
+        if(cost < 0 ){
+            System.out.println("Koszt usługi nie może być mniejszy od zera");
+        }else
         this.cost = cost;
     }
 }
