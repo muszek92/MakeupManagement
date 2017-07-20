@@ -6,7 +6,7 @@ public class Client {
     private int phone;
     private String additionalInformation;
 
-    Scanner scanner = new Scanner(System.in);
+
 
     public Client(String name, String surname, int phone, String additionalInformation) {
         this.name = name;
@@ -15,12 +15,14 @@ public class Client {
         this.additionalInformation = additionalInformation;
     }
 
-    public Client(){
-        this.name = getNameTerminal();
-        this.surname = getSurnameTerminal();
-        this.phone = getPhoneTerminal();
-        this.additionalInformation = getAditionalInformationTerminal();
+    public Client(Scanner scanner){
+        this.name = getNameTerminal(scanner);
+        this.surname = getSurnameTerminal(scanner);
+        this.phone = getPhoneTerminal(scanner);
+        this.additionalInformation = getAditionalInformationTerminal(scanner);
     }
+
+
 
     public String getName() {
         return name;
@@ -54,27 +56,23 @@ public class Client {
         this.additionalInformation = additionalInformation;
     }
 
-    public String getNameTerminal(){
+    public String getNameTerminal(Scanner scanner){
         System.out.println("Podaj imie klientki: ");
-        Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
 
-    public String getSurnameTerminal(){
+    public String getSurnameTerminal(Scanner scanner){
         System.out.println("Podaj nazwisko klientki: ");
-        Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
 
-    public int getPhoneTerminal(){
+    public int getPhoneTerminal(Scanner scanner){
         System.out.println("Podaj telefon klientki: ");
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    public String getAditionalInformationTerminal(){
+    public String getAditionalInformationTerminal(Scanner scanner){
         System.out.println("Podaj dodatkowe informacje:");
-        Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
 

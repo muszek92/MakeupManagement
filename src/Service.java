@@ -1,17 +1,19 @@
-
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Service {
 
     private String name;
     private String additionalInformation;
-    private Calendar serviceDate;
     private double cost;
+    private Date serviceDate;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Service (String name, String additionalInformation, Calendar serviceDate, double cost) {
+    public Service (String name, String additionalInformation, Date serviceDate, double cost) {
         this.name = name;
         this.additionalInformation = additionalInformation;
         this.serviceDate = serviceDate;
@@ -41,11 +43,11 @@ public class Service {
         this.additionalInformation = additionalInformation;
     }
 
-    public Calendar getServiceDate() {
+    public Date getServiceDate() {
         return serviceDate;
     }
 
-    public void setServiceDate(Calendar serviceDate) {
+    public void setServiceDate(Date serviceDate) {
         this.serviceDate = serviceDate;
     }
 
@@ -59,6 +61,36 @@ public class Service {
         }else
         this.cost = cost;
     }
+
+    public String getNameTerminal(){
+        System.out.println("Podaj nazwę usługi: ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
+    }
+    public String getAdditionalInformationTerminal(){
+        System.out.println("Podaj dodatkowe infomacje o usłudze: ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
+    }
+    public Date getServiceDateTerminal(){
+        System.out.println("Podaj datę na którą umówiona jest klientka  w formacie <yyyy-mm-dd hh:mm>: ");
+        Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        try {
+            return dt.parse(scanner.nextLine());
+        } catch (ParseException e) {
+//            e.printStackTrace();
+            System.out.println("Podana data jest nie prawidłowa.");
+            return getServiceDateTerminal();
+        }
+    }
+
+    public Double getCostTerminal(){
+        System.out.println("Podaj koszt usługi: ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextDouble();
+    }
+
 
 
 }
